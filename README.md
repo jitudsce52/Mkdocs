@@ -79,6 +79,10 @@ INFO    -  Documentation built in 0.08 seconds
 ```
 Use this above data to deploy mkdocs application with docker.
 
+# copy repository
+git clone https://github.com/jitudsce52/Mkdocs.git
+cd Mkdocs
+
 # Build Docker Image
 ----------------------
  sudo docker build . -t jitu/mkdocs
