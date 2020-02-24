@@ -1,6 +1,7 @@
 # Mkdocs
 MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation
 
+```bash
 .
 ├── docker-entrypoint.sh
 ├── Dockerfile
@@ -44,14 +45,16 @@ MkDocs is a fast, simple and downright gorgeous static site generator that's gea
 ├── README.md
 ├── requirements.txt
 └── setup.py
-Build Docker Image
+```
+
+# Build Docker Image
 ----------------------
  sudo docker build . -t jitu/mkdocs
-Producing the website
+# Producing the website
 ----------------------
 sudo docker run --rm -it -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs produce
 
-Running the website
+# Running the website
 ----------------------
  sudo docker run --rm -it -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs serve
 
