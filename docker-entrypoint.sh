@@ -2,10 +2,12 @@
   INPUT_STRING=$1
   case $INPUT_STRING in
         produce)
-                tar -czvf produced.tar.gz docs/ sites/ mkdocs.yml
+		cd Mkdocs_config
+                tar -czvf produced.tar.gz docs/ site/ mkdocs.yml
                 ;;
         serve)
-        tar -c / -xvzf produced.tar.gzs
+	
+        tar -C / -xvzf Mkdocs_config/produced.tar.gz
                 mkdocs $1
                 break
                 ;;
