@@ -17,7 +17,9 @@ RUN \
     'mkdocs-minify-plugin>=0.2' \
     'mkdocs-git-revision-date-localized-plugin>=0.4'
 WORKDIR /
-COPY entrypoint.sh entrypoint.sh
+COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN ln -s /usr/local/bin/docker-entrypoint.sh /
+    chmod +x /entrypoint.sh
 EXPOSE 8000
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["serve", "--dev-addr=0.0.0.0:8000"]
