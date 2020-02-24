@@ -17,9 +17,7 @@ RUN \
     'mkdocs-minify-plugin>=0.2' \
     'mkdocs-git-revision-date-localized-plugin>=0.4'
 WORKDIR /
-COPY docs.tar docs.tar
-RUN tar -xvf docs.tar
-RUN chmod -R 777 docs
+COPY entrypoint.sh entrypoint.sh
 EXPOSE 8000
-ENTRYPOINT ["mkdocs"]
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["serve", "--dev-addr=0.0.0.0:8000"]
