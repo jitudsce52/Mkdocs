@@ -93,6 +93,6 @@ sudo docker run --rm -it -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs prod
 
 # Running the website
 ----------------------
- sudo docker run --rm -it -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs serve
+ docker run --rm -d -p 8000:8000 -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs serve
 
 
