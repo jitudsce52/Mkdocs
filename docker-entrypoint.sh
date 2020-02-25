@@ -8,7 +8,7 @@
         serve)
 	
         tar -C / -xvzf Mkdocs_config/produced.tar.gz
-                mkdocs $1
+                mkdocs $1 --dev-addr=0.0.0.0:8000
                 break
                 ;;
         *)
