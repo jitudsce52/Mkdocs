@@ -3,19 +3,20 @@ pipeline {
     stage ('Checkout') {
         agent any
         steps {
-            git(
-                url: 'https://github.com/jitudsce52/Mkdocs.git'
-            )
+            checkout scm
         }
+
     }
     stage ('Build') {
-        agent {
-            dockerfile {
-            filename 'Dockerfile'
-        }
+        agent any
+	steps {
+	  sh 'docker build -t jitu/mkdocs .'	
       }
     }
     stage ('deploy') {
-        sh 'mkdockerize.sh'
+        agent any
+	steps {
+          sh 'mkdockerize.sh'
+	}
     }
 }
