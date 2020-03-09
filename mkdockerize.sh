@@ -1,6 +1,4 @@
 #!/bin/sh
-Printf "Enter your choice:\n"
-read INPUT_STRING
 #  INPUT_STRING=$1
   case $INPUT_STRING in
         produce)

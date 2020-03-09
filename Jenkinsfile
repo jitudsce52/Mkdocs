@@ -1,22 +1,30 @@
 pipeline {
-    agent none
-    stage ('Checkout') {
-        agent any
-        steps {
-            checkout scm
-        }
+    agent {
+        docker { image 'node:7-alpine' }
+    }
 
-    }
-    stage ('Build') {
-        agent any
-	steps {
-	  sh 'docker build -t jitu/mkdocs .'	
-      }
-    }
-    stage ('deploy') {
-        agent any
-	steps {
-          sh 'mkdockerize.sh'
+    stages {
+	stage('checkout') {
+            steps {
+	        checkout scm
+	    }
 	}
+        stage('Build') {
+            steps {
+                sh 'docker build -t jitu/mkdocs .'
+            }
+        }
+        stage('produce') {
+            steps {
+                sh './mkdockerize.sh produce'
+            }
+        }
+        stage('Serve') {
+            steps {
+                sh './mkdockerize.sh serve'
+                echo 'Deploying....'
+            }
+        }
     }
 }
+
