@@ -1,4 +1,7 @@
 FROM python:3.8.1-alpine3.11
+
+ARG MKDOCS_HOME=/var/mkdocs_home
+ENV MKDOCS_HOME=$MKDOCS_HOME
 # Set build directory
 WORKDIR /tmp
 # Copy files necessary for build
@@ -16,7 +19,12 @@ RUN \
   && pip install --no-cache-dir \
     'mkdocs-minify-plugin>=0.2' \
     'mkdocs-git-revision-date-localized-plugin>=0.4'
-WORKDIR /
+
+# mkdocs home directory is a volume, so configuration and build history
+# can be persisted and survive image upgrades
+VOLUME $MKDOCS_HOME
+
+WORKDIR /MKDOCS_HOME
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN ln -s /usr/local/bin/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
