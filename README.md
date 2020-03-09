@@ -95,4 +95,9 @@ sudo docker run --rm -it -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs prod
 ----------------------
  docker run --rm -d -p 8000:8000 -v ${PWD}/Mkdocs_config:/Mkdocs_config jitu/mkdocs serve
 
+# Mkdockerize
+to run whole process to launch the application.
+mkdockerize.sh
 
+# Jenkinsfile
+We can use Jenkinsfile to run deploy the application to docker environment with jenkins pipeline. If we have jenkins integrated with docker.
